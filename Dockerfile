@@ -22,4 +22,14 @@ RUN apk add --no-cache --update --virtual .build-deps \
 COPY fluent.conf /fluentd/etc/
 COPY entrypoint.sh /bin/
 
+RUN mkdir -p /fluentd/etc/conf.d/ /fluentd/buffer/ 
+RUN addgroup -S fluent && adduser -S fluent -G fluent -u 1000
+RUN chown -Rf fluent. /fluentd
+
+ENV FLUENTD_CONF="fluent.conf"
+
+ENV LD_PRELOAD=""
+EXPOSE 24224 5140
+
 USER fluent
+CMD ["fluentd"]
