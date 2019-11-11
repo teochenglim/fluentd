@@ -8,7 +8,7 @@ USER root
 RUN apk add --no-cache libmaxminddb-dev geoip geoip-dev
 RUN apk add --no-cache --update --virtual .build-deps \
         sudo build-base ruby-dev \
-        && sudo gem install  fluent-plugin-geoip \
+        && sudo gem install fluent-plugin-geoip \
                             fluent-plugin-elasticsearch \
                             fluent-plugin-kubernetes_metadata_filter \
                             fluent-plugin-remote-syslog \
@@ -16,6 +16,7 @@ RUN apk add --no-cache --update --virtual .build-deps \
                             fluent-plugin-prometheus \
                             fluent-plugin-kafka \
                             fluent-plugin-copy_ex \
+                            fluent-plugin-forest \
         && sudo gem sources --clear-all \
         && apk del .build-deps \
         && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
