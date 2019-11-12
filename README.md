@@ -6,7 +6,7 @@ docker run -it --rm --name fluentd \
     -p 24224:24224 \
     -p 24224:24224/udp \
     -v $(pwd)/data:/fluentd/log \
-    -v $(pwd)/custom.conf:/fluentd/etc/conf.d/custom.conf \
+    -v $(pwd)/config/:/fluentd/etc/conf.d/ \
     teochenglim/fluentd
 ```
 
@@ -18,6 +18,6 @@ docker run -d --rm --name fluentd \
     -p 24224:24224 \
     -p 24224:24224/udp \
     -v $(pwd)/data:/fluentd/log \
-    -v $(pwd)/custom.conf:/fluentd/etc/conf.d/custom.conf \
+    -v $(pwd)/config:/fluentd/etc/conf.d/ \
     teochenglim/fluentd
 ```
