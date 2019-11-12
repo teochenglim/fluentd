@@ -25,8 +25,8 @@ COPY fluent.conf /fluentd/etc/
 COPY entrypoint.sh /bin/
 
 RUN mkdir -p /fluentd/etc/conf.d/ /fluentd/buffer/ /fluentd/log
-RUN addgroup -S fluent && adduser -S fluent -G fluent -u 1000
-RUN chown -Rf fluent. /fluentd/
+RUN addgroup -S fluent -g 1000 && adduser -S fluent -G fluent -u 1000
+RUN chown -Rf fluent. /fluentd
 
 ENV FLUENTD_CONF="fluent.conf"
 
